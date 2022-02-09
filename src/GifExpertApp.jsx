@@ -1,12 +1,18 @@
 import { useState } from "react";
-import FormCategory from "./components/FormCategory";
+import SearchBar from "./components/SearchBar";
+import ListOfGifs from "./components/ListOfGifs";
+import { useFetchGifs } from "./hooks/useFetchGifs";
 
 function GifExpertApp() {
-  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState("Aespa");
+
+  const { loading, data: gifs } = useFetchGifs(category);
+
   return (
     <>
       <h1>GifExpertApp</h1>
-      <FormCategory setCategories={setCategories} />
+      <SearchBar setCategory={setCategory} />
+      <ListOfGifs gifs={gifs} loading={loading} />
       <hr />
     </>
   );

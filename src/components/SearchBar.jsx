@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-const FormCategory = ({ setCategories }) => {
+const SearchBar = ({ setCategory }) => {
   const [inputValue, setInputValue] = useState("");
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -8,8 +8,8 @@ const FormCategory = ({ setCategories }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    inputValue.trim() !== "" &&
-      setCategories((categories) => [...categories, inputValue]);
+    inputValue.trim() !== "" && setCategory(inputValue);
+    setInputValue("");
   };
 
   return (
@@ -18,7 +18,7 @@ const FormCategory = ({ setCategories }) => {
     </form>
   );
 };
-FormCategory.propTypes = {
-  setCategories: PropTypes.func.isRequired,
+SearchBar.propTypes = {
+  setCategory: PropTypes.func.isRequired,
 };
-export default FormCategory;
+export default SearchBar;
