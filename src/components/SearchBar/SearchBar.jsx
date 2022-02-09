@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-import useField from "../hooks/useField";
+import useField from "../../hooks/useField";
+import styles from "./SearchBar.module.css";
 import { useLocation } from "wouter";
 const SearchBar = ({ setCategory }) => {
   const category = useField({ type: "text" });
@@ -12,8 +13,16 @@ const SearchBar = ({ setCategory }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input placeholder="Type something..." {...category} name="category" />
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <input
+        className={styles.input}
+        placeholder="Type something..."
+        {...category}
+        name="category"
+      />
+      <button type="submit">
+        <span className="material-icons">search</span>
+      </button>
     </form>
   );
 };
