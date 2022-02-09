@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SearchBar from "./components/SearchBar";
-import ListOfGifs from "./components/ListOfGifs";
+import ListOfGifs from "./components/ListOfGifs/ListOfGifs";
 import { useFetchGifs } from "./hooks/useFetchGifs";
 
 function GifExpertApp() {

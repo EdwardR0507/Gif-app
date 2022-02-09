@@ -1,20 +1,19 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
+import useField from "../hooks/useField";
+import { useLocation } from "wouter";
 const SearchBar = ({ setCategory }) => {
-  const [inputValue, setInputValue] = useState("");
-  const handleChange = (e) => {
-    setInputValue(e.target.value);
-  };
+  const category = useField({ type: "text" });
+  const [, pushLocation] = useLocation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    inputValue.trim() !== "" && setCategory(inputValue);
-    setInputValue("");
+    category.value.trim() !== "" && setCategory(category.value);
+    pushLocation(`/category/${category.value}`);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" value={inputValue} onChange={handleChange} />
+      <input placeholder="Type something..." {...category} name="category" />
     </form>
   );
 };
