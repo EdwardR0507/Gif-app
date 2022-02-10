@@ -6,7 +6,7 @@ const ListOfGifs = ({ loading, gifs }) => {
     <section className={styles.grid}>
       {loading && <p>Loading...</p>}
       {gifs.map((gif) => (
-        <Gif key={gif.id} id={gif.id} title={gif.title} url={gif.url} />
+        <Gif key={gif.id} title={gif.title} url={gif.url} />
       ))}
     </section>
   );
