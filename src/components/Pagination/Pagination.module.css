@@ -28,3 +28,12 @@
 .paginationDisabled a {
   display: none;
 }
+
+@media screen and (max-width: 600px) {
+  .paginationBttns {
+    width: 75%;
+  }
+  .paginationBttns a {
+    margin: 1.5px;
+  }
+}

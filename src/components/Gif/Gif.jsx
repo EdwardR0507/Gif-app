@@ -3,10 +3,10 @@ import style from "./Gif.module.css";
 const Gif = ({ title, url }) => {
   return (
     <div className={style.card}>
-      <div className={style.image_container}>
+      <figure className={style.image_container}>
         <img className={style.image} src={url} alt={title} />
-      </div>
-      <p className={style.title}>{title}</p>
+        <figcaption className={style.caption}>{title}</figcaption>
+      </figure>
     </div>
   );
 };
