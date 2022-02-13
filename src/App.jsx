@@ -3,6 +3,7 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import ListOfGifs from "./components/ListOfGifs/ListOfGifs";
 import { usePagination } from "./hooks/usePagination";
 import Pagination from "./components/Pagination/Pagination";
+import styles from "./App.module.css";
 function App() {
   const [category, setCategory] = useState("Dreamcatcher");
   const [gifs, pageCount, changePage, loading] = usePagination({
@@ -12,10 +13,20 @@ function App() {
 
   return (
     <>
-      <h1 className="title">Gif App</h1>
+      <h1 className={styles.title}>Gif App</h1>
       <SearchBar setCategory={setCategory} />
-      <ListOfGifs gifs={gifs} loading={loading} />
-      <Pagination pageCount={pageCount} changePage={changePage} gifs={gifs} />
+      {loading ? (
+        <span className={styles.spinner}></span>
+      ) : (
+        <>
+          <ListOfGifs gifs={gifs} />
+          <Pagination
+            gifs={gifs}
+            pageCount={pageCount}
+            changePage={changePage}
+          />
+        </>
+      )}
     </>
   );
 }

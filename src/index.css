@@ -41,15 +41,6 @@ body {
   padding: 20px;
 }
 
-.title {
-  background: linear-gradient(to right, hsl(10 100% 72%), hsl(250 100% 59%));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-align: center;
-  font-size: 10vmin;
-  line-height: 1.1;
-}
-
 input {
   font-size: 1.2em;
   padding: 10px;
