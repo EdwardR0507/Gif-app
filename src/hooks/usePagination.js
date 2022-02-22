@@ -1,17 +1,16 @@
 import { useState } from "react";
-import { useFetchGifs } from "./useFetchGifs";
 
-export const usePagination = ({ category, gifsPerPage }) => {
+export const usePagination = ({ data, itemsPerPage }) => {
   const [pageNumber, setPageNumber] = useState(0);
-  const { loading, data: gifs } = useFetchGifs(category);
-  const pagesVisited = pageNumber * gifsPerPage;
 
-  const selectedgifs = gifs?.slice(pagesVisited, pagesVisited + gifsPerPage);
+  const pagesVisited = pageNumber * itemsPerPage;
 
-  const pageCount = Math.ceil(gifs.length / gifsPerPage);
+  const selectedItems = data?.slice(pagesVisited, pagesVisited + itemsPerPage);
+
+  const pageCount = Math.ceil(data.length / itemsPerPage);
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
-  return [selectedgifs, pageCount, changePage, loading];
+  return [selectedItems, pageCount, changePage];
 };

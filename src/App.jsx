@@ -4,11 +4,13 @@ import ListOfGifs from "./components/ListOfGifs/ListOfGifs";
 import { usePagination } from "./hooks/usePagination";
 import Pagination from "./components/Pagination/Pagination";
 import styles from "./App.module.css";
+import { useFetchGifs } from "./hooks/useFetchGifs";
 function App() {
   const [category, setCategory] = useState("Dreamcatcher");
-  const [gifs, pageCount, changePage, loading] = usePagination({
-    category,
-    gifsPerPage: 9,
+  const { data: gifs, loading } = useFetchGifs(category);
+  const [gifsSelected, pageCount, changePage] = usePagination({
+    data: gifs,
+    itemsPerPage: 9,
   });
 
   return (
@@ -19,9 +21,9 @@ function App() {
         <span className={styles.spinner}></span>
       ) : (
         <>
-          <ListOfGifs gifs={gifs} />
+          <ListOfGifs gifs={gifsSelected} />
           <Pagination
-            gifs={gifs}
+            gifs={gifsSelected}
             pageCount={pageCount}
             changePage={changePage}
           />
